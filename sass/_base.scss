@@ -1,0 +1,289 @@
+// Responsive mixins -----------------------------------
+
+// Breakpoints
+
+@mixin bp($value){
+	@media only screen and (min-width:$value){
+		@content;
+	}
+}
+
+@mixin bp-under($value){
+	@media only screen and (max-width:$value){
+		@content;
+	}
+}
+
+// Showing/hiding
+
+@mixin only($breakpoint){
+	display:none;
+	@media only screen and (min-width:$breakpoint) {
+    	display:block;
+  	}
+}
+
+@mixin onlyunder($breakpoint){
+	display:none;
+	@media only screen and (max-width:$breakpoint) {
+    	display:block;
+  	}
+}
+
+
+
+// Colour -----------------------------------------------
+
+// Black and White reset
+$black:#000;
+$white:#fff;
+
+// Interaction colours
+$hover:blue;
+$focus:blue;
+$active:blue;
+
+// Brand colours
+$color-brand:#223656;
+$color-accent:#d47d57;
+$color-lines:$black;
+$color-lines-light:#e0e0e0;
+$color-text:$black;
+$color-background:$white;
+
+
+
+// Styling  ---------------------------------------
+
+// Borders
+$border:1px solid $color-lines;
+
+@mixin box-shadow($box-shadow){
+	box-shadow:$box-shadow;
+}
+
+// Rounded corners
+@mixin rounded-corners($rounded-corners){
+	border-radius:$rounded-corners;
+}
+
+// Opacity
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+
+
+// TYPOGRAPHY AND TEXT FORMATTING ----------------------------------
+
+// Fonts
+$font-sans:'Proxima Nova W01';
+$font-serif:'Plantin W01';
+
+@mixin font-main{
+	font-family:$font-sans, sans-serif;
+	font-weight:300;
+}
+
+// Change selection colour
+
+::selection{
+	background-color:gold;
+	color:$white;
+}
+
+// Body text styling
+
+.text-body{
+	@include font-main;
+	letter-spacing:0;
+	color:$color-text;
+	h1, h2, h3, h4, h5{
+		margin-bottom:.7rem;
+	}
+	h1{
+		font-size:1.5em;
+	}
+	h2{
+		font-size:1.2em;
+	}
+	h3{
+		font-size:1em;
+	}
+	h4{
+		font-size:1em;
+	}
+	p, ul {
+	  margin-top: 0;
+	  margin-bottom: 1.5em;
+	} 
+}
+
+// Other custom text mixins
+
+@mixin text-blocky{
+	text-transform:uppercase;
+	letter-spacing:.07em;
+}
+
+@mixin text-tiny{
+	font-size:1rem;
+}
+
+// Accessibility
+
+.u--screen-reader-text {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
+
+
+// LINKS AND BUTTONS -----------------------------------
+
+// Hover transition
+
+@mixin link-transition(	$link-transition){
+	transition:$link-transition;
+}
+
+// Link hover effect
+
+@mixin hover-effect($hovercolor){
+	@include link-transition(all .4s ease);
+	&:hover{
+		color:$hovercolor;
+	}
+}
+
+// Link underline with hover effect
+
+@mixin hover-effect-underline($hovercolor){
+	display:inline-block;
+	@include link-transition(all 1s ease);
+	border-bottom:2px solid;
+	padding-bottom:.3em;
+	&:hover{
+		border-bottom:2px solid $hovercolor;
+	}
+}
+
+a{
+	text-decoration:none;
+	cursor:pointer;
+	color:$black;
+	@include hover-effect(blue);
+	&:focus{
+		color:$focus;
+	};
+	&:active{
+		color:$active;
+	}
+  &.-underline{
+    @include hover-effect-underline(blue);
+  }
+}
+
+
+// Buttons -----------------------------------
+
+@mixin btn-cta($radius,$textcolor,$bgcolor){
+  color:$textcolor;
+  background-color:$bgcolor;
+  text-transform:uppercase;
+	padding:1em 1.4em;
+  &.--rounded{
+    border-radius:$radius;
+  }
+  &.--inverted{
+    color:$textcolor;
+    background-color:$bgcolor;
+  }
+  &.--notransform{
+    text-transform:none;
+  }
+}
+
+.btn-cta{
+  @include btn-cta(6px,$white,$color-accent);
+}
+
+
+// BASE STYLING -------------------------------------
+
+html {
+	font-family:$font-sans, sans-serif;
+	font-weight:300;
+	font-size:62.5%;
+	line-height:1.5;
+	color:$color-text;
+	background-color:$color-background;
+}
+
+body{
+  font-size:1.4em;
+  @include bp(500px) {
+    font-size:1.5em;
+  }
+  @include bp(700px) {
+    font-size:1.6em;
+  }
+  @include bp(900px) {
+    font-size:1.7em;
+  }
+  @include bp(1600px) {
+    font-size:1.8em;
+  }
+}
+
+html,body{
+}
+
+
+// LAYOUT -----------------------------------
+
+.container{
+	@include outer-container(1200px);
+	  padding-left:10px;
+	  padding-right:10px;
+}
+
+.row{
+	@include row();
+}
+	
+	
+//  HEADER -----------------------------------------------------------
+
+
+header{
+  .header__site-title{
+    img{
+			max-width:300px;
+      width:100%;
+			height:auto;
+    }
+  }
+}// end header
+
+.homepage{
+  nav{
+    .nav__nav-item{
+      &.--homepage{
+        color:black;
+      }
+    }
+  }
+}// Add for all pages
+
+
+
+//  FOOTER ------------------------------------------------------------
+
+
+footer{
+}

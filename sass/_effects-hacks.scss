@@ -1,0 +1,40 @@
+
+// Prevent highlighting when you click something
+
+.u--noselect {
+    user-select: none;
+}
+
+// Text smoothing / anti-aliasing
+
+html,body{
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+// Some useful presentational classes
+
+.u--clear {
+  clear: both;
+}
+
+.u--nobreak{
+	white-space:nowrap;
+}
+
+hr{
+	border:0;
+	border-bottom:0;
+	background-color:$color-lines;
+	height:1px;
+	display:block;
+}
+
+// Vertical hr spacer
+
+@mixin hr($height){
+  margin: 0;
+  border: 0;
+  height: 1$height;
+  background-color:transparent;
+}

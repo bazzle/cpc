@@ -1,0 +1,29 @@
+//  NO-JS OVERRIDES 
+
+.no-js{
+	.dropdown{
+		display:block;
+	}
+}
+
+// Responsive overrides
+
+.u--img-dt{
+	display:none;
+  @include bp(700px){
+    display:block;
+  }
+}
+
+.u--img-mobile{
+	display:block;
+  @include bp(700px){
+    display:none;
+  }
+}
+
+//script will take care of this element appearing
+
+.u--fadein {
+  display: none;
+}
