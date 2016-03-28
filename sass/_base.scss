@@ -37,6 +37,7 @@
 // Black and White reset
 $black:#000;
 $white:#fff;
+$gray:#fbfbfb;
 
 // Interaction colours
 $hover:blue;
@@ -225,22 +226,24 @@ html {
 }
 
 body{
-  font-size:1.4em;
+  font-size:1.8em;
   @include bp(500px) {
-    font-size:1.5em;
+    font-size:1.9em;
   }
   @include bp(700px) {
-    font-size:1.6em;
+    font-size:2em;
   }
   @include bp(900px) {
-    font-size:1.7em;
+    font-size:2.1em;
   }
   @include bp(1600px) {
-    font-size:1.8em;
+    font-size:2.2em;
   }
 }
 
 html,body{
+  width:100%;
+  height:100%;
 }
 
 
@@ -261,25 +264,80 @@ html,body{
 
 
 header{
-  .header__site-title{
-    img{
-			max-width:300px;
-      width:100%;
-			height:auto;
+  display:flex;
+  width:100%;
+  height:100%;
+  flex-wrap:wrap;
+  align-content:flex-start;
+  flex-direction:column;
+  .header__head{
+    background-color:white;
+  }
+  .header-head__inner{
+    width:100%;
+    height:150px;
+    display:flex;
+    flex-direction:row-reverse;
+    align-items:center;
+    padding:2rem;
+    .header__site-title{
+      img{
+			  max-width:250px;
+        width:100%;
+			  height:auto;
+      }
+    }
+    .header__nav{
+      flex-grow:2;
+      nav{
+        display:none;
+      }
+    }
+  }
+  .header__panel{
+    width:100%;
+    flex-grow:2;
+    background-image:url(../img/content/hero.jpg);
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:center;
+  }
+  .header-panel__content{
+    color:$white;
+    .panel__title{
+      font-size:2em;
+    }
+    .panel__intro{
     }
   }
 }// end header
 
-.homepage{
-  nav{
-    .nav__nav-item{
-      &.--homepage{
-        color:black;
-      }
-    }
-  }
-}// Add for all pages
 
+
+
+
+//  MENU / SITE -----------------------------------------------------------
+
+
+body{
+  display:flex;
+}
+
+.menu{
+  width:0;
+  height:100%;
+  z-index:1;
+  background-color:$gray;
+  nav{
+    display:none;
+  }
+}
+
+.content{
+  width:100%;
+  height:100%;
+}
 
 
 //  FOOTER ------------------------------------------------------------
