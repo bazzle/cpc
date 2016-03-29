@@ -22,6 +22,7 @@ module.exports = function(grunt) {
           'build/output.min.js': [
             'bower_components/jquery/dist/jquery.js',
             'js/modernizr.js',
+            'js/easing.js',
             'bower_components/vivus/dist/vivus.js'
           ]
         }

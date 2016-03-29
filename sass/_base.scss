@@ -37,12 +37,8 @@
 // Black and White reset
 $black:#000;
 $white:#fff;
-$gray:#fbfbfb;
-
-// Interaction colours
-$hover:blue;
-$focus:blue;
-$active:blue;
+$white-off:#f3f3f3;
+$gray--light:#f1f1f1;
 
 // Brand colours
 $color-brand:#ce5151;
@@ -52,12 +48,21 @@ $color-lines-light:#e0e0e0;
 $color-text:$black;
 $color-background:$white;
 
+// Interaction colours
+$hover:$color-brand;
+$focus:$color-brand;
+$active:$color-brand;
 
 
 // Styling  ---------------------------------------
 
 // Borders
 $border:1px solid $color-lines;
+
+@mixin border-indent(){
+  border-bottom:1px solid rgba(0,0,0,.1);
+  box-shadow: 0 1px 0 $white;
+}
 
 @mixin box-shadow($box-shadow){
 	box-shadow:$box-shadow;
@@ -148,14 +153,14 @@ $font-serif:'Plantin W01';
 
 // Hover transition
 
-@mixin link-transition(	$link-transition){
-	transition:$link-transition;
+@mixin hover-transition(	$hover-transition){
+	transition:$hover-transition;
 }
 
 // Link hover effect
 
 @mixin hover-effect($hovercolor){
-	@include link-transition(all .4s ease);
+	@include hover-transition(all .4s ease);
 	&:hover{
 		color:$hovercolor;
 	}
@@ -165,7 +170,7 @@ $font-serif:'Plantin W01';
 
 @mixin hover-effect-underline($hovercolor){
 	display:inline-block;
-	@include link-transition(all 1s ease);
+	@include hover-transition(all 1s ease);
 	border-bottom:2px solid;
 	padding-bottom:.3em;
 	&:hover{
@@ -177,10 +182,10 @@ a{
 	text-decoration:none;
 	cursor:pointer;
 	color:$black;
-	@include hover-effect(blue);
+	@include hover-effect($hover);
 	&:focus{
 		color:$focus;
-	};
+	}
 	&:active{
 		color:$active;
 	}
@@ -197,8 +202,27 @@ a{
   background-color:$bgcolor;
   text-transform:uppercase;
 	padding:1em 1.4em;
-  &.--rounded{
-    border-radius:$radius;
+  font-size:.7em;
+  border-radius:$radius;
+  font-weight:500;
+  margin-right:.8em;
+  display:inline-block;
+  position:relative;
+  @include hover-transition(all .4s ease);
+  &:after{
+     content:'';
+     display:block;
+     position:absolute;
+     top:0;
+     left:0;
+     width:100%;
+     height:100%;
+     background-color:rgba(0,0,0,.05);
+  }
+  &:hover{
+     &:after{
+       background-color:transparent;
+     }
   }
   &.--inverted{
     color:$textcolor;
@@ -207,10 +231,6 @@ a{
   &.--notransform{
     text-transform:none;
   }
-}
-
-.btn-cta{
-  @include btn-cta(6px,$white,$color-accent);
 }
 
 
@@ -249,8 +269,11 @@ body{
 
 .container{
 	@include outer-container(1200px);
-  padding-left:10px;
-  padding-right:10px;
+  padding-left:2em;
+  padding-right:2em;
+  @include bp(1200px){
+    padding:0;
+  }
 }
 
 .row{
@@ -274,14 +297,16 @@ body{
   width:0;
   height:100%;
   z-index:1;
-  background-color:$gray;
+  background-color:$gray--light;
   .menu__inner{
     display:none;
-    padding:2rem;
   }
   .nav__head{
+    padding:0 2rem;
     height:150px;
     display:flex;
+      border-bottom:1px solid rgba(0,0,0,.1);
+      box-shadow: 0 1px 0 $white;
     .header__button{
       align-items:center;
     }
@@ -290,6 +315,8 @@ body{
     display:block;
     a{
       display:block;
+      padding:1.4rem 2rem;
+      @include border-indent();
     }
   }
 }
@@ -298,19 +325,20 @@ body{
   width:100%;
   height:100%;
   overflow-y:scroll;
-}
-	
+}	
 	
 //  HEADER -----------------------------------------------------------
 
 
 header{
-  display:flex;
-  width:100%;
-  height:100%;
-  flex-wrap:wrap;
-  align-content:flex-start;
-  flex-direction:column;
+  display:block;
+  @include bp(600px){
+    display:flex;
+    width:100%;
+    height:100%;
+    align-content:flex-start;
+    flex-direction:column;
+  }
   .header__head{
     background-color:$white;
   }
@@ -347,20 +375,36 @@ header{
   }
   .header-panel__2{
     background-color:rgba(166,85,85,.6);
+    padding-top:4em;
+    padding-bottom:2em;
     width:100%;
-    padding:4em;
     -webkit-clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 91%);
     clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 91%);
   }
   .header-panel__content{
     color:$white;
     .panel__title{
-      font-size:2.2em;
-      max-width:860px;
+      font-size:2em;
+      max-width:1000px;
+      color:#f3f3f3;
+      @include bp(600px){
+        font-size:3.6em;
+      }
     }
     .panel__intro{
       max-width:730px;
+      margin-bottom:1.8em;
     }
+    
+    .panel__cta-buttons{
+      margin-bottom:2em;
+      display:flex;
+      flex-direction:column;
+      @include bp(500px){
+        flex-direction:row;
+      }
+    }
+    
   }
 }// end header
 
@@ -375,6 +419,16 @@ i{
   font-size:1.2em;
 }
 
+.cta-button{
+  @include btn-cta(4px, $black, $white);
+  margin-bottom:1em;
+  text-align:center;
+  @include bp(500px){
+    text-align:left;
+  }
+  &.--content{
+  }
+}
 
 
 //  FOOTER ------------------------------------------------------------
