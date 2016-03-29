@@ -271,7 +271,7 @@ body{
 	@include outer-container(1200px);
   padding-left:2em;
   padding-right:2em;
-  @include bp(1200px){
+  @include bp(1300px){
     padding:0;
   }
 }
@@ -350,7 +350,10 @@ header{
     align-items:center;
     .header__site-title{
       img{
-			  max-width:250px;
+        max-width:200px;
+        @include bp(400px){
+  			  max-width:250px;
+        }
         width:100%;
 			  height:auto;
       }
