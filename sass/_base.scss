@@ -441,6 +441,52 @@ header{
 }// end header
 
 
+//  MAIN SECTION -------------------------------------------------------
+
+main{
+  width:100%;
+  height:100%;
+  .main__panel{
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
+    .main-panel__2{
+      background-color:rgba(0,0,0,.1);
+      padding-top:4em;
+      padding-bottom:2em;
+      width:100%;
+      -webkit-clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 91%);
+      clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 91%);
+    }
+    .main-panel__content{
+      color:$black;
+      .panel__title{
+        font-size:2em;
+        font-weight:500;
+        max-width:1000px;
+        color:$black;
+        @include bp(600px){
+          font-size:3.6em;
+        }
+      }
+      .panel__intro{
+        max-width:730px;
+        margin-bottom:1.8em;
+      }
+    
+      .panel__cta-buttons{
+        margin-bottom:2em;
+        display:flex;
+        flex-direction:column;
+        @include bp(500px){
+          flex-direction:row;
+        }
+      }
+    
+    }
+  } 
+}
 
 
 //  GLOBALS -----------------------------------------------------------
