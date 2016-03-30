@@ -274,9 +274,6 @@ body{
 	@include outer-container(1200px);
   padding-left:2em;
   padding-right:2em;
-  @include bp(1300px){
-    padding:0;
-  }
 }
 
 .row{
@@ -363,7 +360,11 @@ body{
 $headerheight:180px;
 
 header{
-  display:block;
+  display:flex;
+  width:100%;
+  height:100%;
+  align-content:flex-start;
+  flex-direction:column;
   @include bp(600px){
     display:flex;
     width:100%;
@@ -373,10 +374,10 @@ header{
   }
   .header__head{
     width:100%;
-    height:$headerheight;
     position:fixed;
     background-color:$white;
     z-index:1;
+    display:flex;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
     clip-path: polygon(0 0, 100% 6%, 100% 95%, 0 100%);
   }
@@ -486,12 +487,11 @@ main{
     display:flex;
     align-items:center;
     .main-panel__2{
-      background-color:rgba(0,0,0,.1);
-      padding-top:4em;
-      padding-bottom:2em;
+      margin-top:$headerheight;
+      background-color:$white;
+      padding-top:6em;
+      padding-bottom:6em;
       width:100%;
-      -webkit-clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 91%);
-      clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 91%);
     }
     .main-panel__content{
       color:$black;
