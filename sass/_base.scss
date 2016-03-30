@@ -306,7 +306,7 @@ body{
   }
   .nav__head{
     padding:0 2rem;
-    height:150px;
+    height:140px;
     display:flex;
       border-bottom:1px solid rgba(0,0,0,.1);
       box-shadow: 0 1px 0 $white;
@@ -328,7 +328,34 @@ body{
   width:100%;
   height:100%;
   overflow-y:scroll;
-}	
+}
+
+.content__backgrounds{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background-color:$color-brand;
+  z-index:-1;
+  .panel-background{
+    width:100%;
+    height:100%;
+    background-size:cover;
+    &.--bg-content{
+      background-image:url(../img/content/hero-content.jpg);
+      background-position:center bottom;
+    }
+    &.--bg-web{
+      background-image:url(../img/content/hero-web.jpg);
+      background-position:center bottom;
+    }
+    &.--bg-seo{
+      background-image:url(../img/content/hero-seo.jpg);
+      background-position:center bottom;
+    }
+  }
+}
 	
 //  HEADER -----------------------------------------------------------
 
@@ -344,10 +371,12 @@ header{
   }
   .header__head{
     background-color:$white;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80%);
+    clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
   }
   .header-head__inner{
     width:100%;
-    height:150px;
+    height:170px;
     display:flex;
     flex-direction:row-reverse;
     align-items:center;
@@ -374,35 +403,8 @@ header{
     flex-grow:2;
     display:flex;
     align-items:center;
-    -webkit-clip-path: polygon(0 0, 100% 6%, 100% 95%, 0 100%);
-    clip-path: polygon(0 0, 100% 6%, 100% 95%, 0 100%);
   }
-  .header-panel__backgrounds{
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background-color:$color-brand;
-    z-index:-1;
-    .panel-background{
-      width:100%;
-      height:100%;
-      background-size:cover;
-      &.--bg-content{
-        background-image:url(../img/content/hero-content.jpg);
-        background-position:center bottom;
-      }
-      &.--bg-web{
-        background-image:url(../img/content/hero-web.jpg);
-        background-position:center bottom;
-      }
-      &.--bg-seo{
-        background-image:url(../img/content/hero-seo.jpg);
-        background-position:center bottom;
-      }
-    }
-  }
+  
   
   .header-panel__2{
     background-color:rgba(166,85,85,.6);
