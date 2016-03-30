@@ -85,18 +85,20 @@ $border:1px solid $color-lines;
 // TYPOGRAPHY AND TEXT FORMATTING ----------------------------------
 
 // Fonts
-$font-sans:'Proxima Nova W01';
+$font-sans:'DIN Next W01';
 $font-serif:'Plantin W01';
+
+$font-weight:300;
 
 @mixin font-main{
 	font-family:$font-sans, sans-serif;
-	font-weight:300;
+	font-weight:$font-weight;
 }
 
 // Change selection colour
 
 ::selection{
-	background-color:gold;
+	background-color:$color-brand;
 	color:$white;
 }
 
@@ -108,6 +110,7 @@ $font-serif:'Plantin W01';
 	color:$color-text;
 	h1, h2, h3, h4, h5{
 		margin-bottom:.7rem;
+	  font-weight:$font-weight;
 	}
 	h1{
 		font-size:1.5em;
@@ -366,16 +369,41 @@ header{
     }
   }
   .header__panel{
+    position:relative;
     width:100%;
     flex-grow:2;
-    background-image:url(../img/content/hero.jpg);
-    background-size:cover;
-    background-position:center bottom;
     display:flex;
     align-items:center;
     -webkit-clip-path: polygon(0 0, 100% 6%, 100% 95%, 0 100%);
     clip-path: polygon(0 0, 100% 6%, 100% 95%, 0 100%);
   }
+  .header-panel__backgrounds{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color:$color-brand;
+    z-index:-1;
+    .panel-background{
+      width:100%;
+      height:100%;
+      background-size:cover;
+      &.--bg-content{
+        background-image:url(../img/content/hero-content.jpg);
+        background-position:center bottom;
+      }
+      &.--bg-web{
+        background-image:url(../img/content/hero-web.jpg);
+        background-position:center bottom;
+      }
+      &.--bg-seo{
+        background-image:url(../img/content/hero-seo.jpg);
+        background-position:center bottom;
+      }
+    }
+  }
+  
   .header-panel__2{
     background-color:rgba(166,85,85,.6);
     padding-top:4em;
@@ -388,6 +416,7 @@ header{
     color:$white;
     .panel__title{
       font-size:2em;
+      font-weight:500;
       max-width:1000px;
       color:#f3f3f3;
       @include bp(600px){

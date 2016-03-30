@@ -42,6 +42,26 @@ $(document).ready(function(){
   
   
 	
+  // Cycle2 init
+  
+  $('#head__backgrounds').cycle({
+    slides:'> div',
+    easing:'easeInOutExpo',
+    paused:true,
+    speed:1200
+  });
+  
+  // Hover buttons
+  
+  $('#trigger--content').on('mouseenter',function(){
+    $('#head__backgrounds').cycle('goto',0);
+  });
+  $('#trigger--web').on('mouseenter',function(){
+    $('#head__backgrounds').cycle('goto',1);
+  });
+  $('#trigger--seo').on('mouseenter',function(){
+    $('#head__backgrounds').cycle('goto',2);
+  });
   
 	
 	// convert all SVG's into png's for browsers that don't support svg's
