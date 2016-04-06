@@ -381,15 +381,6 @@ header{
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
     clip-path: polygon(0 0, 100% 6%, 100% 95%, 0 100%);
   }
-  .header__head-2{
-    width:100%;
-    position:fixed;
-    background-color:rgba(166,85,85,.3);
-    z-index:1;
-    height:108px;
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80%);
-    clip-path: polygon(0 0, 100% 6%, 100% 95%, 0 100%);
-  }
   .header-head__inner{
     width:100%;
     height:$headerheight;
@@ -397,6 +388,9 @@ header{
     flex-direction:row-reverse;
     align-items:center;
     .header__site-title{
+      font-weight:600;
+      text-transform:uppercase;
+      color:$black;
       img{
         max-width:200px;
         @include bp(400px){
