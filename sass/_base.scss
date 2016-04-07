@@ -267,17 +267,20 @@ body{
 
 // LAYOUT -----------------------------------
 
+$containerwidth:1200px;
+
+@mixin containerwidth(){
+  max-width:$containerwidth;
+  width:100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 
 // Defaults
 
 .container{
-	@include outer-container(1200px);
-  padding-left:2em;
-  padding-right:2em;
-}
-
-.row{
-	@include row();
+  @include containerwidth();
 }
 
 
@@ -442,23 +445,18 @@ header{
     }
   }
   
-  .header-panel__2{
-    background-color:rgba(166,85,85,.6);
-    padding-top:4em;
-    padding-bottom:2em;
-    width:100%;
-    -webkit-clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 91%);
-    clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 91%);
-  }
+
   .header-panel__content{
     color:$white;
     .panel__title{
       font-size:2em;
-      font-weight:500;
-      max-width:1000px;
+      font-weight:800;
       color:#f3f3f3;
+      letter-spacing:-.02em;
       @include bp(600px){
-        font-size:3.6em;
+        font-size: 5em;
+        line-height: 1;
+        max-width:700px;
       }
     }
     .panel__intro{
