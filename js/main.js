@@ -41,18 +41,7 @@ $(document).ready(function(){
   });
   
   
-  // Narrow header on scroll
-  
-  var windowheight = $('window').height();
-  
-  $('.content').on('scroll',function(){
-    $('.header-head__inner').animate({
-      height:'100px'
-    },600,'easeInOutExpo');
-    $('.header__site-title img').animate({
-      'max-width':'150px'
-    },600,'easeInOutExpo');
-  });
+
   
   
 	
