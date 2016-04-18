@@ -41,7 +41,48 @@ $(document).ready(function(){
   });
   
   
+  window.onload = function(){
+    vivuscontent();
+  };
+  
+  
 
+  
+  
+  
+  // Vivus load
+  
+  var contentplayed = false;
+  var phoneplayed = false;
+  
+  function vivuscontent(){
+    
+    if ( !contentplayed ){
+      new Vivus('outline__content', {
+        duration: 80,
+        type:'delayed',
+        animTimingFunction: Vivus.EASE
+      },function(){
+        contentplayed = true;
+      });
+    }
+  }
+
+  
+  function vivusphone(){
+    
+    if ( !phoneplayed ){
+      vivusphonevar = new Vivus('outline__phone', {
+        duration: 80,
+        type:'delayed',
+        animTimingFunction: Vivus.EASE
+      },function(){
+        phoneplayed = true;
+      });
+    }
+  }
+  
+  
   
   
 	
@@ -51,7 +92,7 @@ $(document).ready(function(){
     slides:'> div',
     easing:'easeInOutExpo',
     paused:true,
-    speed:1200
+    speed:600
   });
   
   // Hover buttons
@@ -61,6 +102,7 @@ $(document).ready(function(){
   });
   $('#trigger--web').on('mouseenter',function(){
     $('#head__backgrounds').cycle('goto',1);
+    vivusphone();
   });
   $('#trigger--seo').on('mouseenter',function(){
     $('#head__backgrounds').cycle('goto',2);
@@ -78,6 +120,14 @@ $(document).ready(function(){
 		});
 		
 	}
+  
+  
+  
+  
+  
+
+
+  
 
 	
 	

@@ -85,14 +85,17 @@ $border:1px solid $color-lines;
 // TYPOGRAPHY AND TEXT FORMATTING ----------------------------------
 
 // Fonts
-$font-sans:'DIN Next W01';
+$font-titles:'BT News Gothic W01';
 $font-serif:'Plantin W01';
+$font-sans:'Slate W01';
 
-$font-weight:300;
+$font-thick:700;
+$font-mid:500;
+$font-thin:300;
 
 @mixin font-main{
 	font-family:$font-sans, sans-serif;
-	font-weight:$font-weight;
+	font-weight:$font-thin;
 }
 
 // Change selection colour
@@ -108,9 +111,12 @@ $font-weight:300;
 	@include font-main;
 	letter-spacing:0;
 	color:$color-text;
+  font-weight:$font-thin;
+  letter-spacing:.05em;
 	h1, h2, h3, h4, h5{
 		margin-bottom:.7rem;
-	  font-weight:$font-weight;
+	  font-weight:$font-thick;
+    font-family:$font-titles, sans-serif;
 	}
 	h1{
 		font-size:1.5em;
@@ -211,6 +217,7 @@ a{
   margin-right:.8em;
   display:inline-block;
   position:relative;
+  letter-spacing:.05;
   @include hover-transition(all .4s ease);
   &:after{
      content:'';
@@ -306,7 +313,7 @@ body{
   }
   .nav__head{
     padding:0 2rem;
-    height:100px;
+    height:80px;
     display:flex;
       border-bottom:1px solid rgba(0,0,0,.1);
       box-shadow: 0 1px 0 $white;
@@ -327,7 +334,7 @@ body{
 .content{
   width:100%;
   height:100%;
-  overflow-y:scroll;
+  position:relative;
 }
 
 .content__backgrounds{
@@ -336,23 +343,28 @@ body{
   left:0;
   width:100%;
   height:100%;
-  background-color:$color-brand;
+  background-color:$black;
   z-index:-1;
   .panel-background{
     width:100%;
     height:100%;
+    position:relative;
     background-size:cover;
+    object{
+      width: 40%;
+      height: auto;
+      left: 55%;
+      top: 30%;
+      position:relative;
+    }
     &.--bg-content{
       background-image:url(../img/content/hero-content.jpg);
-      background-position:center bottom;
     }
     &.--bg-web{
       background-image:url(../img/content/hero-web.jpg);
       background-position:center bottom;
     }
     &.--bg-seo{
-      background-image:url(../img/content/hero-seo.jpg);
-      background-position:center bottom;
     }
   }
 }
@@ -360,7 +372,7 @@ body{
 //  HEADER -----------------------------------------------------------
 
 
-$headerheight:120px;
+$headerheight:80px;
 
 header{
   display:flex;
@@ -391,7 +403,7 @@ header{
     flex-direction:row-reverse;
     align-items:center;
     .header__site-title{
-      font-weight:600;
+      font-weight:500;
       text-transform:uppercase;
       color:$black;
       img{
@@ -418,41 +430,17 @@ header{
     display:flex;
     align-items:center;
   }
-  .header-panel__backgrounds{
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background-color:$color-brand;
-    z-index:-1;
-    .panel-background{
-      width:100%;
-      height:100%;
-      background-size:cover;
-      &.--bg-content{
-        background-image:url(../img/content/hero-content.jpg);
-        background-position:center bottom;
-      }
-      &.--bg-web{
-        background-image:url(../img/content/hero-web.jpg);
-        background-position:center bottom;
-      }
-      &.--bg-seo{
-        background-image:url(../img/content/hero-seo.jpg);
-        background-position:center bottom;
-      }
-    }
-  }
   
 
   .header-panel__content{
     color:$white;
     .panel__title{
+      font-family:$font-titles,sans-serif;
       font-size:2em;
       font-weight:800;
       color:#f3f3f3;
       letter-spacing:-.02em;
+      margin-bottom:8rem;
       @include bp(600px){
         font-size: 5em;
         line-height: 1;
@@ -461,11 +449,10 @@ header{
     }
     .panel__intro{
       max-width:730px;
-      margin-bottom:1.8em;
+      margin-bottom:8rem;
     }
     
     .panel__cta-buttons{
-      margin-bottom:2em;
       display:flex;
       flex-direction:column;
       @include bp(500px){
@@ -473,7 +460,11 @@ header{
       }
     }
     .cta-button{
-      @include btn-cta(4px, $black, $white);
+      min-width:190px;
+      @include btn-cta(0px, $black, $white);
+      i{
+        color:$black;
+      }
     }
     
   }
