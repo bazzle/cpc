@@ -444,6 +444,7 @@ main{
   @include bp(700px){
     height:100%;
     top:$headerheightminus;
+    padding-top:$headerheight;
   }
   .main__panel{
     width:100%;
