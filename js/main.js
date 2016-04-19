@@ -41,19 +41,12 @@ $(document).ready(function(){
   });
   
   
-  window.onload = function(){
-    vivuscontent();
-  };
-  
-  
-
-  
-  
   
   // Vivus load
   
   var contentplayed = false;
   var phoneplayed = false;
+  var widthwindow = $(window).width();
   
   function vivuscontent(){
     
@@ -68,7 +61,6 @@ $(document).ready(function(){
     }
   }
 
-  
   function vivusphone(){
     
     if ( !phoneplayed ){
@@ -83,7 +75,13 @@ $(document).ready(function(){
   }
   
   
+  var thewindow = $(window);
   
+  thewindow.on('load',function(){
+    if ( thewindow.width() > 900 && Modernizr.svg ){
+      vivuscontent();
+    }
+  });
   
 	
   // Cycle2 init
@@ -102,7 +100,9 @@ $(document).ready(function(){
   });
   $('#trigger--web').on('mouseenter',function(){
     $('#head__backgrounds').cycle('goto',1);
-    vivusphone();
+    if ( thewindow.width() > 900 && Modernizr.svg ){
+      vivusphone();
+    }
   });
   $('#trigger--seo').on('mouseenter',function(){
     $('#head__backgrounds').cycle('goto',2);

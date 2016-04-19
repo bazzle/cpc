@@ -24,7 +24,8 @@ module.exports = function(grunt) {
             'js/modernizr.js',
             'js/easing.js',
             'js/cycle2.js',
-            'bower_components/vivus/dist/vivus.js'
+            'bower_components/vivus/dist/vivus.js',
+            'bower_components/enquire/dist/enquire.js'
           ]
         }
       }
