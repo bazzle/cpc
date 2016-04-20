@@ -497,12 +497,10 @@ main{
     }
     &.--head{
       background:transparent;
-      .panel__content{
-        color:$white;
-        .panel__title{
-          color:$white;
-        }
-      }
+    }
+    &.--web{
+    }
+    &.--inverted{
     }
     .panel__content{
       @include bp(800px){
@@ -548,6 +546,9 @@ main{
       }
       .panel__title{
         color:$black;
+        .--inverted &{
+          color:$white;
+        }
         font-family:$font-titles,sans-serif;
         font-size:3em;
         font-weight:800;
