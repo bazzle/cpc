@@ -224,9 +224,27 @@ a{
     display:inline-block;
     margin-right:1em;
   }
+  &:hover{
+     &:after{
+       background-color:transparent;
+     }
+  }
+  &.--inverted{
+    color:$bgcolor;
+    background-color:$color-brand;
+    i{
+      color:$bgcolor;
+    }
+  }
+  &.--notransform{
+    text-transform:none;
+  }
   i{
     color:$black;
     font-size:1em;
+    .--inverted &{
+      color:$bgcolor;
+    }
   }
   &:after{
      content:'';
@@ -237,19 +255,7 @@ a{
      width:100%;
      height:100%;
      background-color:rgba(0,0,0,.05);
-  }
-  &:hover{
-     &:after{
-       background-color:transparent;
-     }
-  }
-  &.--inverted{
-    color:$textcolor;
-    background-color:$bgcolor;
-  }
-  &.--notransform{
-    text-transform:none;
-  }
+  }  
 }
 
 
@@ -309,6 +315,10 @@ $containerwidth:1200px;
 
 // Main structure
 
+html{
+  background-color:$gray--light;
+}
+
 html,body{
   width:100%;
   height:100%;
@@ -323,24 +333,30 @@ body{
 
 .menu{
   width:0;
-  height:100%;
   z-index:1;
-  background-color:$gray--light;
+  flex-grow:1;
+  overflow:hidden;
   .menu__inner{
+    width:100%;
     display:none;
+    position:fixed;
+    top:0;
+    left:0;
   }
   .nav__head{
     padding:0 2rem;
     height:80px;
     display:flex;
-      border-bottom:1px solid rgba(0,0,0,.1);
-      box-shadow: 0 1px 0 $white;
+    border-bottom:1px solid rgba(0,0,0,.1);
+    box-shadow: 0 1px 0 $white;
     .header__button{
       align-items:center;
     }
   }
   nav{
     display:block;
+    height:100%;
+    width:100%;
     a{
       display:block;
       padding:1.4rem 2rem;
@@ -401,7 +417,10 @@ $headerheightminus:-80px;
 header{
   width:100%;
   height:$headerheight;
-  position:relative;
+  position:fixed;
+  @include bp(700px){
+    position:relative;
+  }
   background-color:$white;
   z-index:2;
   @include bp(600px){
@@ -420,6 +439,8 @@ header{
       font-weight:500;
       text-transform:uppercase;
       color:$black;
+      width: 300px;
+      text-align: right;
       img{
         max-width:200px;
         @include bp(400px){
@@ -429,10 +450,22 @@ header{
 			  height:auto;
       }
     }
-    .nav{
+    .header__nav{
       flex-grow:2;
+      .nav__button{
+        @include bp(700px){
+          display:none!important;
+        }
+      }
       nav{
+        font-weight:font-mid;
         display:none;
+        @include bp(700px){
+          display:flex;
+        }
+        justify-content:space-between;
+        .nav__nav-item{
+        }
       }
     }
   }
@@ -444,9 +477,11 @@ header{
 main{
   width:100%;
   height:auto;
-  overflow-y:scroll;
   position:relative;
+  margin-top:$headerheight;
   @include bp(700px){
+    margin-top:0;
+    overflow-y:scroll;
     height:100%;
     top:$headerheightminus;
     padding-top:$headerheight;
@@ -514,12 +549,12 @@ main{
       .panel__title{
         color:$black;
         font-family:$font-titles,sans-serif;
-        font-size:2em;
+        font-size:3em;
         font-weight:800;
         letter-spacing:-.02em;
         margin-bottom:.6em;
         line-height: 1;
-        max-width:730px;
+        max-width:660px;
         @include bp(900px){
           font-size:4em;
           .--head &{
@@ -528,7 +563,7 @@ main{
         }
       }
       .panel__intro{
-        max-width:730px;
+        max-width:660px;
         margin-bottom:2em;
         @include bp(900px){
           margin-bottom:3em;
@@ -552,7 +587,6 @@ main{
 
 
 i{
-  color:#ce5151;
   font-size:1.2em;
 }
 
