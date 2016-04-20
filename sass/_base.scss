@@ -453,14 +453,14 @@ header{
     .header__nav{
       flex-grow:2;
       .nav__button{
-        @include bp(700px){
+        @include bp(900px){
           display:none!important;
         }
       }
       nav{
         font-weight:font-mid;
         display:none;
-        @include bp(700px){
+        @include bp(900px){
           display:flex;
         }
         justify-content:space-between;

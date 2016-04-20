@@ -49,7 +49,7 @@ $(document).ready(function(){
   
   
   
-  enquire.register("screen and (max-width:700px)", {
+  enquire.register("screen and (max-width:900px)", {
     
     match : function() {
     
