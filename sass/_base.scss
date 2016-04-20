@@ -220,7 +220,7 @@ a{
   @include hover-transition(all .4s ease);
   min-width:190px;
   margin-bottom:1em;
-  @include bp(700px){
+  @include bp(800px){
     display:inline-block;
     margin-right:1em;
   }
@@ -275,7 +275,7 @@ body{
   @include bp(500px) {
     font-size:1.9em;
   }
-  @include bp(700px) {
+  @include bp(800px) {
     font-size:2em;
   }
   @include bp(900px) {
@@ -326,7 +326,7 @@ html,body{
 
 body{
   display:flex;
-  @include bp(700px){
+  @include bp(800px){
     overflow:hidden;
   }
 }
@@ -418,7 +418,7 @@ header{
   width:100%;
   height:$headerheight;
   position:fixed;
-  @include bp(700px){
+  @include bp(800px){
     position:relative;
   }
   background-color:$white;
@@ -479,7 +479,7 @@ main{
   height:auto;
   position:relative;
   margin-top:$headerheight;
-  @include bp(700px){
+  @include bp(800px){
     margin-top:0;
     overflow-y:scroll;
     height:100%;
@@ -490,7 +490,7 @@ main{
     width:100%;
     background:$white;
     overflow:hidden;
-    @include bp(700px){
+    @include bp(800px){
       height:100%;
       padding-top:0;
       padding-bottom:0;
@@ -505,7 +505,7 @@ main{
       }
     }
     .panel__content{
-      @include bp(700px){
+      @include bp(800px){
         display:flex;
         align-items:center;
         justify-content:space-between;
@@ -518,7 +518,7 @@ main{
         width:100%;
         padding-top:4em;
         padding-bottom:4em;
-        @include bp(700px){
+        @include bp(800px){
           width:50%;
           padding-top:0;
           padding-bottom:0;
@@ -533,7 +533,7 @@ main{
           background-image:url('../img/content/content.jpg');
           background-size:cover;
           background-position:center center;
-          @include bp(700px){
+          @include bp(800px){
             width:50%;
             height:100%;
             padding-top:0;
