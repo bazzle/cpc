@@ -26,7 +26,7 @@
 @mixin onlyunder($breakpoint){
 	display:none;
 	@media only screen and (max-width:$breakpoint) {
-    	display:block;
+    	display:block
   	}
 }
 
@@ -41,12 +41,17 @@ $white-off:#f3f3f3;
 $gray--light:#f1f1f1;
 
 // Brand colours
-$color-brand:#ce5151;
+$color-brand:#d33131;
 $color-accent:#d47d57;
 $color-lines:$black;
 $color-lines-light:#e0e0e0;
 $color-text:$black;
 $color-background:$white;
+
+//Red
+$brand-red:#d33131;
+$brand-blue:#3535e0;
+
 
 // Interaction colours
 $hover:$color-brand;
@@ -229,7 +234,7 @@ a{
        background-color:transparent;
      }
   }
-  &.--inverted{
+  .--inverted{
     color:$bgcolor;
     background-color:$color-brand;
     i{
@@ -240,11 +245,8 @@ a{
     text-transform:none;
   }
   i{
-    color:$black;
+    color:$textcolor;
     font-size:1em;
-    .--inverted &{
-      color:$bgcolor;
-    }
   }
   &:after{
      content:'';
@@ -471,10 +473,7 @@ header{
   }
 }// end header
 
-
-//  MAIN SECTION -------------------------------------------------------
-
-main{
+.scroll{
   width:100%;
   height:auto;
   position:relative;
@@ -485,6 +484,18 @@ main{
     height:100%;
     top:$headerheightminus;
     padding-top:$headerheight;
+  }
+}
+
+//  MAIN SECTION -------------------------------------------------------
+
+main{
+  width:100%;
+  height:auto;
+  position:relative;
+  @include bp(800px){
+    margin-top:0;
+    height:100%;
   }
   .main__panel{
     width:100%;
@@ -499,11 +510,33 @@ main{
       background:transparent;
     }
     &.--web{
+      background:transparent;
+      @include bp-under(800px){
+        background-color:$brand-blue;
+      }
+    }
+    &.--seo{
+      background:$white;
+    }
+    &.--contact{
+      background:$white-off;
+      .--form-intro{
+        padding-bottom:0;
+      }
+      .--form{
+        padding-top:0;
+      }
     }
     &.--inverted{
+      color:$white;
     }
-    .panel__content{
-      @include bp(800px){
+  }
+}
+
+// inner panel
+
+.panel__content{
+    @include bp(800px){
         display:flex;
         align-items:center;
         justify-content:space-between;
@@ -539,45 +572,77 @@ main{
           }
         }
       }
-      .content__inner_full{
+}
+  
+.content__inner_full{
         width:100%;
         padding-top:4em;
         padding-bottom:4em;
-      }
-      .panel__title{
-        color:$black;
-        .--inverted &{
-          color:$white;
+        &.--text{
+          padding-left:2rem;
+          padding-right:4rem;
         }
+}
+.panel__title{
         font-family:$font-titles,sans-serif;
         font-size:3em;
         font-weight:800;
         letter-spacing:-.02em;
         margin-bottom:.6em;
         line-height: 1;
-        max-width:660px;
-        @include bp(900px){
+        .content__inner_half &{
+          font-size:3em;
+        }
+        .--head &{
+          max-width:660px;
+        }
+        @include bp(800px){
           font-size:4em;
           .--head &{
-            width:60%; 
+            width:60%;
           }
         }
-      }
-      .panel__intro{
-        max-width:660px;
+}
+.panel__intro{
+        max-width:900px;
         margin-bottom:2em;
         @include bp(900px){
           margin-bottom:3em;
           .--head &{
+            max-width:660px;
             width:60%; 
           }
         }
-      }
+}
   
-      .panel__cta-buttons{
-        @include bp-under(700px){
-          max-width:350px;
-        }
+.panel__cta-buttons{
+  @include bp-under(700px){
+    max-width:350px;
+  }
+}
+
+
+form{
+  display:flex;
+  flex-wrap:wrap;
+  .form__row{
+    display:flex;
+    flex-wrap:wrap;
+    width:100%;
+    margin-bottom:1em;
+    &.--submit{
+      margin-top:1em;
+    }
+    label{
+      width:100%;
+    }
+    input{
+      flex-grow:1;
+      border:1px solid $color-lines;
+      font-size: .8em;
+      padding: 1rem;
+      &[type="submit"]{
+        max-width:300px;
       }
     }
   }
@@ -592,7 +657,14 @@ i{
 }
 
 .cta-button{
-  @include btn-cta(0px, $black, $white);
+  @include btn-cta(0px, $white, $black);
+  .--inverted &{
+    background-color:$white;
+    color:$black;
+    i{
+      color:$black;
+    }
+  }
 }
 
 
@@ -600,5 +672,13 @@ i{
 
 
 footer{
+  height:0;
   background-color:$black;
+  padding-bottom:400px;
+  .footer__content{ 
+  }
 }
+
+
+
+
