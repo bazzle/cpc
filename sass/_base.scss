@@ -419,7 +419,6 @@ $headerheightminus:-80px;
 header{
   width:100%;
   height:$headerheight;
-  position:fixed;
   @include bp(800px){
     position:relative;
   }
