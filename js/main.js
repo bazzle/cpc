@@ -1,5 +1,25 @@
 
 $(document).ready(function(){
+  
+
+  
+  
+  
+  
+  // Snap to panels
+  
+  function snapscroll(){
+    
+  	$(window).on('load',function(){
+	  
+  		$.scrollify({
+  		  section : ".scroll-section"
+      });
+    
+  	});
+    
+  }
+
 	
 	
 	// menu  
@@ -47,17 +67,25 @@ $(document).ready(function(){
   }
   
   
+
+
   
-  
-  enquire.register("screen and (max-width:900px)", {
-    
+  enquire
+  .register("screen and (max-width:900px)", {
     match : function() {
-    
       burgermenu();
-      
     }
-    
+  })
+  .register("screen and (min-width:900px)", {
+    match : function() {
+      snapscroll();
+    },
+    unmatch : function() {
+    }
   });
+  
+  
+  
   
   
   

@@ -18,6 +18,8 @@
  		<meta name="HandheldFriendly" content="True">
  		<meta name="MobileOptimized" content="320">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+    
+		
 		
 		<!--FONT LINKAGE -->
     <script type="text/javascript" src="//fast.fonts.net/jsapi/9cba27df-7a15-4cdc-9cd6-d85b7567ccde.js"></script>
@@ -27,7 +29,8 @@
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
 		
 		<!-- Scripts -->
-        <script src="build/output.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="js/modernizr.js"></script>
 		
 		
 		<!-- FAVICONS -->
@@ -51,8 +54,10 @@
 		<meta name="msapplication-TileImage" content="favicon/mstile-144x144.png">
 		<meta name="theme-color" content="#ffffff">
 		
+
 		
-		
+    
+    
     </head>
     <body class="homepage">
 		
@@ -112,8 +117,6 @@
 					
   				</header>
           
-          
-          <div class="scroll">
 		
 		
   				<main>
@@ -121,7 +124,7 @@
             
             <!-- Home panel -->
             
-            <div class="main__panel --head --inverted">
+            <div class="scroll-section main__panel --head --inverted" data-section-name="hello">
               
                 <div class="panel__content container --padded">
                   
@@ -136,9 +139,9 @@
                     </p>
                   
                     <div class="panel__cta-buttons">
-                      <a class="cta-button --content" id="trigger--content" href="#">Content &nbsp; <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-                      <a class="cta-button --web" id="trigger--web" href="#">Web Design &nbsp; <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-                      <a class="cta-button --seo" id="trigger--seo" href="#">SEO &nbsp; <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                      <a class="cta-button-anim --content" id="trigger--content" href="#">Content &nbsp; <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                      <a class="cta-button-anim --web" id="trigger--web" href="#">Web Design &nbsp; <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                      <a class="cta-button-anim --seo" id="trigger--seo" href="#">SEO &nbsp; <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                       <!--<a class="cta-button --all" id="trigger--seo" href="#">Whole Package &nbsp; <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>-->
                     </div>
                     
@@ -152,7 +155,7 @@
             
             <!-- Content panel -->
             
-            <article class="main__panel --content">
+            <article class="scroll-section main__panel --content" data-section-name="content">
               
               <div class="panel__content container --full_width">
                 
@@ -183,7 +186,7 @@
             
             <!-- Web design panel -->
             
-            <article class="main__panel --web --inverted">
+            <article class="scroll-section main__panel --web --inverted" data-section-name="web-design">
               
               <div class="panel__content container">
                 
@@ -197,7 +200,7 @@
                   </p>
             
                   <div class="panel__cta-buttons">
-                    <a class="cta-button" id="trigger--content" href="#">Learn more about Web design  &nbsp; <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                    <a class="cta-button-anim" id="trigger--content" href="#">Learn more about Web design  &nbsp; <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                   </div>
                 
                 </div>
@@ -211,7 +214,7 @@
             
             <!-- SEO panel -->
             
-            <article class="main__panel --seo">
+            <article class="scroll-section main__panel --seo" data-section-name="seo">
               
               <div class="panel__content container --full_width">
                 
@@ -243,7 +246,7 @@
             
             <!-- Contact panel -->
             
-            <article class="main__panel --contact">
+            <article class="scroll-section main__panel --contact" data-section-name="contact">
               
               <div class="panel__content container">
                 
@@ -303,7 +306,7 @@
           </main>
 				
 				
-  				<footer class="footer">
+  				<footer class="scroll-section footer">
 					
             <div class="footer__content container">
               
@@ -356,10 +359,8 @@
 		
 		
 
-
-		
-		
-		<script src="js/main.js"></script>
+        <script src="build/output.min.js"></script>
+        <script src="js/main.js"></script>
 		
 		
 

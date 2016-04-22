@@ -118,6 +118,7 @@ $font-thin:300;
 	color:$color-text;
   font-weight:$font-thin;
   letter-spacing:.05em;
+  
 	h1, h2, h3, h4, h5{
 		margin-bottom:.7rem;
 	  font-weight:$font-thick;
@@ -273,6 +274,7 @@ html {
 }
 
 body{
+  //background-color:$white-off;
   font-size:1.8em;
   @include bp(500px) {
     font-size:1.9em;
@@ -328,16 +330,13 @@ html,body{
 
 body{
   display:flex;
-  @include bp(800px){
-    overflow:hidden;
-  }
 }
 
 .menu{
   width:0;
   z-index:1;
   flex-grow:1;
-  overflow:hidden;
+  overflow-x:hidden;
   .menu__inner{
     width:100%;
     display:none;
@@ -375,7 +374,7 @@ body{
 
 .content__backgrounds{
   position:absolute;
-  top:0;
+  top:80px;
   left:0;
   width:100%;
   height:100%;
@@ -417,10 +416,11 @@ $headerheight:80px;
 $headerheightminus:-80px;
 
 header{
+  position:fixed;
   width:100%;
   height:$headerheight;
   @include bp(800px){
-    position:relative;
+    //position:relative;
   }
   background-color:$white;
   z-index:2;
@@ -472,19 +472,7 @@ header{
   }
 }// end header
 
-.scroll{
-  width:100%;
-  height:auto;
-  position:relative;
-  margin-top:$headerheight;
-  @include bp(800px){
-    margin-top:0;
-    overflow-y:scroll;
-    height:100%;
-    top:$headerheightminus;
-    padding-top:$headerheight;
-  }
-}
+
 
 //  MAIN SECTION -------------------------------------------------------
 
@@ -492,16 +480,16 @@ main{
   width:100%;
   height:auto;
   position:relative;
-  @include bp(800px){
-    margin-top:0;
-    height:100%;
-  }
+  display:block;
   .main__panel{
     width:100%;
     background:$white;
     overflow:hidden;
+    //height defined by js
+    .no-js &{
+      min-height:1000px;
+    }
     @include bp(800px){
-      height:100%;
       padding-top:0;
       padding-bottom:0;
     }
@@ -509,7 +497,7 @@ main{
       background:transparent;
     }
     &.--web{
-      background:transparent;
+      background-color:$brand-blue;
       @include bp-under(800px){
         background-color:$brand-blue;
       }
@@ -520,10 +508,14 @@ main{
     &.--contact{
       background:$white-off;
       .--form-intro{
-        padding-bottom:0;
+        @include bp-under(800px){
+          padding-bottom:0;
+        }
       }
       .--form{
-        padding-top:0;
+        @include bp-under(800px){
+          padding-top:0;
+        }
       }
     }
     &.--inverted{
@@ -544,42 +536,49 @@ main{
       &.--full_width{
         justify-content:space-around;
       }
-      .content__inner_half{
-        width:100%;
-        padding-top:4em;
-        padding-bottom:4em;
-        @include bp(800px){
-          width:50%;
-          padding-top:0;
-          padding-bottom:0;
-        }
-        &.--text{
-          padding-left:2rem;
-          padding-right:4rem;
-        }
-        &.--image{
-          width:100%;
-          height:400px;
-          background-image:url('../img/content/content.jpg');
-          background-size:cover;
-          background-position:center center;
-          @include bp(800px){
-            width:50%;
-            height:100%;
-            padding-top:0;
-            padding-bottom:0;
-          }
-        }
-      }
+}
+
+.content__inner_half{
+  width:100%;
+  padding-top:4em;
+  padding-bottom:4em;
+  @include bp(800px){
+    width:50%;
+    padding-top:160px;
+    padding-bottom:80px;
+  }
+  &.--text{
+    padding-left:2rem;
+    padding-right:4rem;
+  }
+  &.--image{
+    width:100%;
+    height:400px;
+    background-image:url('../img/content/content.jpg');
+    background-size:cover;
+    background-position:center center;
+    @include bp(800px){
+      width:50%;
+      height:100%;
+      padding-top:0;
+      padding-bottom:0;
+    }
+  }
 }
   
 .content__inner_full{
         width:100%;
         padding-top:4em;
         padding-bottom:4em;
+        @include bp(800px){
+          padding-top:160px;
+          padding-bottom:80px;
+        }
         &.--text{
           padding-left:2rem;
           padding-right:4rem;
+        }
+        .--head &{
         }
 }
 .panel__title{
@@ -590,7 +589,7 @@ main{
         margin-bottom:.6em;
         line-height: 1;
         .content__inner_half &{
-          font-size:3em;
+          font-size:2.6em;
         }
         .--head &{
           max-width:660px;
@@ -656,7 +655,8 @@ i{
 }
 
 .cta-button{
-  @include btn-cta(0px, $white, $black);
+  @include btn-cta(0px, $black, $white);
+  /*
   .--inverted &{
     background-color:$white;
     color:$black;
@@ -664,7 +664,64 @@ i{
       color:$black;
     }
   }
+  */
 }
+
+
+
+
+.cta-button-anim{
+  color:$white;
+  background-color:transparent;
+  text-transform:uppercase;
+	padding:1em 1.4em;
+  font-size:.7em;
+  font-weight:500;
+  display:block;
+  position:relative;
+  letter-spacing:.05;
+  border:2px solid $white;
+  @include hover-transition(all .4s ease);
+  min-width:190px;
+  margin-bottom:1em;
+  position:relative;
+  z-index:5;
+  @include bp(800px){
+    display:inline-block;
+    margin-right:1em;
+  }
+  &.--notransform{
+    text-transform:none;
+  }
+  i{
+    color:$white;
+    font-size:.8em;
+  }
+  &:after{
+     content:'';
+     display:block;
+     position:absolute;
+     bottom:0;
+     left:0;
+     width:100%;
+     height:0;
+     background-color:$white;
+     z-index:-1;
+  }
+  &:hover{
+    i{
+      color:$color-brand;
+    }
+     &:after{
+       height:100%;
+       transition: height .3s;
+     }
+  }
+}
+
+
+
+
 
 
 //  FOOTER ------------------------------------------------------------

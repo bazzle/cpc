@@ -20,12 +20,11 @@ module.exports = function(grunt) {
       bower_js_files: {
         files: {
           'build/output.min.js': [
-            'bower_components/jquery/dist/jquery.js',
-            'js/modernizr.js',
             'js/easing.js',
             'js/cycle2.js',
             'bower_components/vivus/dist/vivus.js',
-            'bower_components/enquire/dist/enquire.js'
+            'bower_components/enquire/dist/enquire.js',
+            'bower_components/scrollify/jquery.scrollify.js'
           ]
         }
       }
