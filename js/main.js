@@ -1,8 +1,43 @@
 
 $(document).ready(function(){
   
+  
+  
+  // Maintain height of panels
+  
+  function panelheight(){
+    
+    $(window).on('load resize',function(){
+      
+      var windowwidth = $(this).width();
+      var windowheight = $(this).height();
+      
+      if ( windowwidth >= 900 ){
+        $('.main__panel').height(windowheight);
+      } else {
+        $('.main__panel').height('auto');
+      }   
+    
+    });
+    
+  }  
+
+  panelheight();
+  
 
   
+  $(window).on('load',function(){
+  
+    $('.load-overlay').fadeOut(200);
+  
+  });
+  
+  
+  // How many scroll sections on the page
+  
+  //var secondlastsection = $('.scroll-section:eq(-2)').addClass('secondlast');
+  
+  //var currentsection
   
   
   
@@ -13,8 +48,11 @@ $(document).ready(function(){
   	$(window).on('load',function(){
 	  
   		$.scrollify({
-  		  section : ".scroll-section"
+  		  section : ".scroll-section",
+        setHeights: false
       });
+      
+      
     
   	});
     

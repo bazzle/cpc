@@ -288,6 +288,12 @@ body{
   @include bp(1600px) {
     font-size:2.2em;
   }
+  
+  body{
+    height:100%;
+    overflow:hidden;
+  }
+  
 }
 
 
@@ -390,7 +396,7 @@ body{
       width: 40%;
       height: auto;
       left: 55%;
-      top: 30%;
+      top: 20%;
       position:relative;
       display:none;
       @include bp(900px){
@@ -419,11 +425,11 @@ header{
   position:fixed;
   width:100%;
   height:$headerheight;
+  z-index:20;
   @include bp(800px){
     //position:relative;
   }
   background-color:$white;
-  z-index:2;
   @include bp(600px){
     display:flex;
     width:100%;
@@ -481,14 +487,24 @@ main{
   height:auto;
   position:relative;
   display:block;
+  .load-overlay{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color:$white;
+    z-index:10;
+    display:block;
+    .no-js &{
+       display:none;
+    }
+  }
   .main__panel{
     width:100%;
     background:$white;
     overflow:hidden;
     //height defined by js
-    .no-js &{
-      min-height:1000px;
-    }
     @include bp(800px){
       padding-top:0;
       padding-bottom:0;
@@ -671,7 +687,7 @@ i{
 
 
 .cta-button-anim{
-  color:$white;
+  color:$black;
   background-color:transparent;
   text-transform:uppercase;
 	padding:1em 1.4em;
@@ -680,7 +696,7 @@ i{
   display:block;
   position:relative;
   letter-spacing:.05;
-  border:2px solid $white;
+  border:2px solid $black;
   @include hover-transition(all .4s ease);
   min-width:190px;
   margin-bottom:1em;
@@ -694,7 +710,7 @@ i{
     text-transform:none;
   }
   i{
-    color:$white;
+    color:$black;
     font-size:.8em;
   }
   &:after{
@@ -705,18 +721,38 @@ i{
      left:0;
      width:100%;
      height:0;
-     background-color:$white;
+     background-color:black;
      z-index:-1;
   }
   &:hover{
+    color:$white;
     i{
-      color:$color-brand;
+      color:$white;
     }
      &:after{
        height:100%;
        transition: height .3s;
      }
   }
+  
+  .--inverted &{
+    color:$white;
+    border:2px solid $white;
+    &:after{
+      background-color:$white; 
+    }
+    i{
+      color:$white;
+    }
+    &:hover{
+      color:$color-brand;
+      i{
+       color:$color-brand;
+      } 
+    }
+  }
+  
+  
 }
 
 
@@ -727,11 +763,52 @@ i{
 //  FOOTER ------------------------------------------------------------
 
 
-footer{
-  height:0;
+.footer{
+  height:auto;
   background-color:$black;
-  padding-bottom:400px;
-  .footer__content{ 
+  color:$white;
+  .footer__content{
+    padding-top:6rem;
+    padding-bottom:8rem;
+    padding-left:2rem;
+    padding-right:4rem;
+    text-align:center;
+      @include bp(800px){
+          display:flex;
+          align-items:flex-start;
+          justify-content:space-between;
+          text-align:left;
+      }
+      .footer__share-icons{
+        @include bp-under(800px){
+          margin-top:2em;
+        }
+        i{
+          color: #fff;
+          font-size: 1.6em;
+          margin-left: 1rem;
+        }
+      }
+      .footer__item{
+        .item__title{
+          margin-bottom:1em;
+        }
+        @include bp-under(800px){
+        padding-bottom:1em;
+        }
+      }
+  }
+  .footer__footnote{
+    text-align:center;
+    height:auto;
+    font-size:.8em;
+    padding-bottom:2rem;
+    a{
+      color:$white;
+      &:hover{
+        color:$white;
+      };
+    }
   }
 }
 
