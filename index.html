@@ -21,8 +21,8 @@
     
 		
 		
-		<!--FONT LINKAGE 
-    <script type="text/javascript" src="//fast.fonts.net/jsapi/9cba27df-7a15-4cdc-9cd6-d85b7567ccde.js"></script>-->
+		<!--FONT LINKAGE -->
+    <script type="text/javascript" src="//fast.fonts.net/jsapi/9cba27df-7a15-4cdc-9cd6-d85b7567ccde.js"></script>
     
 		<!-- Stylesheet -->
 		<link rel="stylesheet" href="css/main.css">
@@ -68,18 +68,10 @@
             <script type="text/javascript" src="js/selectivizr.min.js"></script>
         <![endif]-->
         
-        
-        <div class="content">
           
           
           <div class="content__backgrounds" id="head__backgrounds">
             <div class="panel-background --bg-content">
-              <object id="outline__content" type="image/svg+xml" data="img/content/outline-content.svg"></object>
-            </div>
-            <div class="panel-background --bg-web">
-              <object id="outline__phone" type="image/svg+xml" data="img/content/outline-phone.svg"></object>
-            </div>
-            <div class="panel-background --bg-seo">
             </div>
           </div>
           
@@ -119,11 +111,13 @@
             
             <!-- Home panel -->
             
-            <div class="scroll-section main__panel --head --inverted" data-section-name="hello">
+
+            <div class="scroll-section main__panel --head --inverted" data-section-name="intro">
+            
               
-                <div class="panel__content container --padded">
-                  
-                  <div class="content__inner_full">
+                <div class="panel__content container">
+                
+                  <div class="content__inner_full --text">
                     
                     <h1 class="panel__title">
                      What are you looking for?
@@ -132,25 +126,24 @@
                     <p class="panel__intro">
                       Sed tincidunt eleifend ex, vitae molestie orci varius vel. Aliquam sit amet dolor dictum, imperdiet dolor quis, euismod tortor. Sed tincidunt eleifend ex, vitae molestie orci varius vel. Aliquam sit amet dolor dictum, imperdiet dolor quis, euismod tortor.
                     </p>
-                  
+            
                     <div class="panel__cta-buttons">
                       <a class="cta-button-anim --content" id="trigger--content" href="#">Content &nbsp; <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                       <a class="cta-button-anim --web" id="trigger--web" href="#">Web Design &nbsp; <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                       <a class="cta-button-anim --seo" id="trigger--seo" href="#">SEO &nbsp; <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-                      <!--<a class="cta-button --all" id="trigger--seo" href="#">Whole Package &nbsp; <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>-->
                     </div>
                     
-                  </div>               
-                
                 </div>
-            
+                
+              </div>
+              
             </div>
             
             
             
             <!-- Content panel -->
             
-            <article class="scroll-section main__panel --content" data-section-name="content">
+            <article class="scroll-section main__panel --content --inverted" data-section-name="content">
               
               <div class="panel__content container --full_width">
                 
@@ -164,12 +157,13 @@
                   </p>
             
                   <div class="panel__cta-buttons">
-                    <a class="cta-button-anim" id="trigger--content" href="#">Learn more about content  &nbsp; <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                    <a class="cta-button-anim" href="#">Learn more about content  &nbsp; <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                   </div>
                 
                 </div>
                 
-                <div class="content__inner_half --image">
+                <div class="content__inner_half --image-full">
+                  <object id="outline__content" type="image/svg+xml" data="img/content/outline-content.svg"></object>
                 </div>
               
               </div>
@@ -195,7 +189,7 @@
                   </p>
             
                   <div class="panel__cta-buttons">
-                    <a class="cta-button-anim" id="trigger--content" href="#">Learn more about Web design  &nbsp; <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                    <a class="cta-button-anim" href="#">Learn more about Web design  &nbsp; <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                   </div>
                 
                 </div>
@@ -209,7 +203,7 @@
             
             <!-- SEO panel -->
             
-            <article class="scroll-section main__panel --seo" data-section-name="seo">
+            <article class="scroll-section main__panel --inverted --seo" data-section-name="seo">
               
               <div class="panel__content container --full_width">
                 
@@ -223,7 +217,7 @@
                   </p>
             
                   <div class="panel__cta-buttons">
-                    <a class="cta-button-anim" id="trigger--content" href="#">Learn more about SEO  &nbsp; <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                    <a class="cta-button-anim" href="#">Learn more about SEO  &nbsp; <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                   </div>
                 
                 </div>
@@ -241,7 +235,7 @@
             
             <!-- Contact panel -->
             
-            <article class="scroll-section main__panel --contact" data-section-name="contact">
+            <article class="scroll-section main__panel --inverted --contact" data-section-name="contact">
               
               <div class="panel__content container">
                 
@@ -348,9 +342,6 @@
             </div>
 					
   				</footer>
-          
-          
-        </div>
         
         
 				

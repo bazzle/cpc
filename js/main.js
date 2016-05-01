@@ -60,64 +60,7 @@ $(document).ready(function(){
 
 	
 	
-	// menu
-  
-  var menuopen = false;
-  
-  $('.nav__button').on('click',function(){
-    
-    if ( !menuopen ){
-
-      $('header .nav__button').fadeOut(200,function(){
-        $('.menu').animate({
-          width:'300px',
-        },600,'easeInOutExpo',function(){
-          $('.menu__inner').fadeIn(200).find('.nav__button').html(' <i class="fa fa-close"></i> Close menu ');
-        });
-      });
-      
-      
-        menuopen = true;
-    
-    } else {
-        
-      $('.menu__inner').fadeOut(200,function(){
-        $('.menu').animate({
-          width:'0'
-        },600,'easeInOutExpo',function(){
-          $('.menu__inner').find('.nav__button').html(' <i class="fa fa-bars"></i> Menu ');
-          $('header .nav__button').fadeIn(200);
-        });
-      });
-      menuopen = false;
-        
-    }
-    
-  });
-  
-  
-  // Disappear menu on browser resize
-  
-  $(window).on('resize',function(){
-    var thewindowwidth = $(window).width();
-    if ( thewindowwidth > 765 && menuopen ){
-      $('nav').css('height','73px');
-      menuopen = false;
-    }
-    if ( thewindowwidth < 765){
-      $('nav').css({
-        'height':'auto',
-        'display':'none'
-      });
-    }
-    if ( thewindowwidth > 765 && !menuopen ){
-      $('nav').css({
-        'height':'73px',
-        'display':'block'
-      });
-      menuopen = false;
-    }
-  });
+	
   
   
   
@@ -146,46 +89,7 @@ $(document).ready(function(){
   
   
   
-  // Vivus load
   
-  var contentplayed = false;
-  var phoneplayed = false;
-  var widthwindow = $(window).width();
-  
-  function vivuscontent(){
-    
-    if ( !contentplayed ){
-      new Vivus('outline__content', {
-        duration: 80,
-        type:'delayed',
-        animTimingFunction: Vivus.EASE
-      },function(){
-        contentplayed = true;
-      });
-    }
-  }
-
-  function vivusphone(){
-    
-    if ( !phoneplayed ){
-      vivusphonevar = new Vivus('outline__phone', {
-        duration: 80,
-        type:'delayed',
-        animTimingFunction: Vivus.EASE
-      },function(){
-        phoneplayed = true;
-      });
-    }
-  }
-  
-  
-  var thewindow = $(window);
-  
-  thewindow.on('load',function(){
-    if ( thewindow.width() > 900 && Modernizr.svg ){
-      vivuscontent();
-    }
-  });
   
 	
   // Cycle2 init
@@ -204,9 +108,6 @@ $(document).ready(function(){
   });
   $('#trigger--web').on('mouseenter',function(){
     $('#head__backgrounds').cycle('goto',1);
-    if ( thewindow.width() > 900 && Modernizr.svg ){
-      vivusphone();
-    }
   });
   $('#trigger--seo').on('mouseenter',function(){
     $('#head__backgrounds').cycle('goto',2);
