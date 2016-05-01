@@ -2,6 +2,11 @@
 
 // Breakpoints
 
+$bp1:400px;
+$bp2:800px;
+$bp3:1000px;
+
+
 @mixin bp($value){
 	@media only screen and (min-width:$value){
 		@content;
@@ -26,7 +31,7 @@
 @mixin onlyunder($breakpoint){
 	display:none;
 	@media only screen and (max-width:$breakpoint) {
-    	display:block
+    	display:block;
   	}
 }
 
@@ -226,7 +231,7 @@ a{
   @include hover-transition(all .4s ease);
   min-width:190px;
   margin-bottom:1em;
-  @include bp(800px){
+  @include bp($bp2){
     display:inline-block;
     margin-right:1em;
   }
@@ -279,10 +284,10 @@ body{
   @include bp(500px) {
     font-size:1.9em;
   }
-  @include bp(800px) {
+  @include bp($bp2) {
     font-size:2em;
   }
-  @include bp(900px) {
+  @include bp($bp3) {
     font-size:2.1em;
   }
   @include bp(1600px) {
@@ -399,7 +404,7 @@ body{
       top: 20%;
       position:relative;
       display:none;
-      @include bp(900px){
+      @include bp($bp3){
         display:block;
       }
     }
@@ -426,10 +431,10 @@ header{
   width:100%;
   height:$headerheight;
   z-index:20;
-  @include bp(800px){
+  background-color:$white;
+  @include bp($bp2){
     //position:relative;
   }
-  background-color:$white;
   @include bp(600px){
     display:flex;
     width:100%;
@@ -450,7 +455,7 @@ header{
       text-align: right;
       img{
         max-width:200px;
-        @include bp(400px){
+        @include bp($bp1){
   			  max-width:250px;
         }
         width:100%;
@@ -460,14 +465,14 @@ header{
     .header__nav{
       flex-grow:2;
       .nav__button{
-        @include bp(900px){
+        @include bp($bp3){
           display:none!important;
         }
       }
       nav{
         font-weight:font-mid;
         display:none;
-        @include bp(900px){
+        @include bp($bp3){
           display:flex;
         }
         justify-content:space-between;
@@ -505,7 +510,7 @@ main{
     background:$white;
     overflow:hidden;
     //height defined by js
-    @include bp(800px){
+    @include bp($bp2){
       padding-top:0;
       padding-bottom:0;
     }
@@ -543,7 +548,7 @@ main{
 // inner panel
 
 .panel__content{
-    @include bp(800px){
+    @include bp($bp2){
         display:flex;
         align-items:center;
         justify-content:space-between;
@@ -558,7 +563,7 @@ main{
   width:100%;
   padding-top:4em;
   padding-bottom:4em;
-  @include bp(800px){
+  @include bp($bp2){
     width:50%;
     padding-top:160px;
     padding-bottom:80px;
@@ -573,7 +578,7 @@ main{
     background-image:url('../img/content/content.jpg');
     background-size:cover;
     background-position:center center;
-    @include bp(800px){
+    @include bp($bp2){
       width:50%;
       height:100%;
       padding-top:0;
@@ -586,7 +591,7 @@ main{
         width:100%;
         padding-top:4em;
         padding-bottom:4em;
-        @include bp(800px){
+        @include bp($bp2){
           padding-top:160px;
           padding-bottom:80px;
         }
@@ -610,7 +615,7 @@ main{
         .--head &{
           max-width:660px;
         }
-        @include bp(800px){
+        @include bp($bp2){
           font-size:4em;
           .--head &{
             width:60%;
@@ -620,7 +625,7 @@ main{
 .panel__intro{
         max-width:900px;
         margin-bottom:2em;
-        @include bp(900px){
+        @include bp($bp3){
           margin-bottom:3em;
           .--head &{
             max-width:660px;
@@ -702,7 +707,7 @@ i{
   margin-bottom:1em;
   position:relative;
   z-index:5;
-  @include bp(800px){
+  @include bp($bp2){
     display:inline-block;
     margin-right:1em;
   }
@@ -773,7 +778,7 @@ i{
     padding-left:2rem;
     padding-right:4rem;
     text-align:center;
-      @include bp(800px){
+      @include bp($bp2){
           display:flex;
           align-items:flex-start;
           justify-content:space-between;
