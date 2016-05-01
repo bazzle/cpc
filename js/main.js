@@ -60,50 +60,68 @@ $(document).ready(function(){
 
 	
 	
-	// menu  
+	// menu
   
-  function burgermenu(){
+  var menuopen = false;
+  
+  $('.nav__button').on('click',function(){
     
-    
-    var themenu = $('.header__nav').html();
-    $('.menu__inner').html(themenu);
-  
-  
-    var menuopen = false;
-  
-    $('.nav__button').on('click',function(){
-    
-      if ( !menuopen ){
+    if ( !menuopen ){
 
-          $('header .nav__button').fadeOut(200,function(){
-            $('.menu').animate({
-              width:'300px',
-            },600,'easeInOutExpo',function(){
-              $('.menu__inner').fadeIn(200).find('.nav__button').html(' <i class="fa fa-close"></i> Close menu ');
-            });
-          });
-          menuopen = true;
-    
-      } else {
-        
-          $('.menu__inner').fadeOut(200,function(){
-            $('.menu').animate({
-              width:'0'
-            },600,'easeInOutExpo',function(){
-              $('.menu__inner').find('.nav__button').html(' <i class="fa fa-bars"></i> Menu ');
-              $('header .nav__button').fadeIn(200);
-            });
-          });
+      $('header .nav__button').fadeOut(200,function(){
+        $('.menu').animate({
+          width:'300px',
+        },600,'easeInOutExpo',function(){
+          $('.menu__inner').fadeIn(200).find('.nav__button').html(' <i class="fa fa-close"></i> Close menu ');
+        });
+      });
       
-        menuopen = false;
+      
+        menuopen = true;
+    
+    } else {
         
-      }
+      $('.menu__inner').fadeOut(200,function(){
+        $('.menu').animate({
+          width:'0'
+        },600,'easeInOutExpo',function(){
+          $('.menu__inner').find('.nav__button').html(' <i class="fa fa-bars"></i> Menu ');
+          $('header .nav__button').fadeIn(200);
+        });
+      });
+      menuopen = false;
+        
+    }
     
-    });
-    
-    
-  }
+  });
   
+  
+  // Disappear menu on browser resize
+  
+  $(window).on('resize',function(){
+    var thewindowwidth = $(window).width();
+    if ( thewindowwidth > 765 && menuopen ){
+      $('nav').css('height','73px');
+      menuopen = false;
+    }
+    if ( thewindowwidth < 765){
+      $('nav').css({
+        'height':'auto',
+        'display':'none'
+      });
+    }
+    if ( thewindowwidth > 765 && !menuopen ){
+      $('nav').css({
+        'height':'73px',
+        'display':'block'
+      });
+      menuopen = false;
+    }
+  });
+  
+  
+  
+
   
 
 
