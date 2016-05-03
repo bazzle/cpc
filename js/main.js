@@ -3,6 +3,36 @@ $(document).ready(function(){
   
   
   
+  
+	// menu
+  
+  function burgermenu(){
+    
+    menuopen = false;
+  
+    $('.nav__button').on('click',function(){
+    
+      if ( !menuopen ){
+
+        $('nav').stop().slideDown(400);
+          menuopen = true;
+    
+      } else {
+        
+         $('nav').stop().slideUp(400);
+        menuopen = false;
+        
+      }
+    
+    });
+    
+  }
+  
+  
+  
+  
+  
+  
   // Maintain height of panels
   
   function panelheight(){
@@ -33,13 +63,6 @@ $(document).ready(function(){
   });
   
   
-  // How many scroll sections on the page
-  
-  //var secondlastsection = $('.scroll-section:eq(-2)').addClass('secondlast');
-  
-  //var currentsection
-  
-  
   
   // Snap to panels
   
@@ -51,23 +74,12 @@ $(document).ready(function(){
   		  section : ".scroll-section",
         setHeights: false
       });
-      
-      
-    
   	});
     
   }
-
-	
-	
-	
   
   
   
-
-  
-
-
   
   enquire
   .register("screen and (max-width:900px)", {
@@ -78,8 +90,10 @@ $(document).ready(function(){
   .register("screen and (min-width:900px)", {
     match : function() {
       snapscroll();
+      $.scrollify.enable();
     },
     unmatch : function() {
+      $.scrollify.disable();
     }
   });
   
