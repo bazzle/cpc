@@ -242,6 +242,7 @@ a{
   @include hover-transition(all .4s ease);
   min-width:190px;
   margin-bottom:1em;
+  white-space:nowrap;
   @include bp($bp2){
     display:inline-block;
     margin-right:1em;
@@ -745,6 +746,7 @@ i{
   letter-spacing:.05;
   border:2px solid $black;
   @include hover-transition(all .4s ease);
+  white-space:nowrap;
   .--head &{
     max-width:250px;
   }
