@@ -2,5 +2,57 @@
 
 
 
-body.homepage{
-};
+.landing-page{
+  header{
+    position:absolute;
+  }
+  footer{
+    background-color:$content-bg;
+  }
+  main{
+    .main__panel{
+      &.--head{
+        @include bp($bp2){
+          height:450px;
+        }
+        .content__inner_full{
+          padding-left:1em;
+          .panel__title{
+            margin:0;
+          }
+        }
+      }
+      &.--content{
+        border-top:10px solid $content-bg;
+        padding-top:3em;
+        @include bp($bp2){
+          padding-top:6em;
+        }
+        background-color:$white;
+        min-height:1000px;
+      }
+      &.--contact{
+        @include bp($bp2){
+          min-height:560px;
+        }
+      }
+    }
+    .main-copy__inner{
+      h1,h2,h3,h4,h5{
+        color:$content-bg;
+      }
+      padding:0 1em;
+      @include text-body;
+      width:100%;
+      padding-bottom:6em;
+      position:relative;
+      img, object{
+        width:100%;
+        height:auto;
+      }
+      @include bp($bp2){
+        width:70%;
+      }
+    }
+  }
+}

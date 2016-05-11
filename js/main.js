@@ -43,15 +43,15 @@ $(document).ready(function(){
       var windowheight = $(this).height();
       
       if ( windowwidth >= 900 ){
-        $('.main__panel').height(windowheight);
+        $('.autoheight').height(windowheight);
       } else {
-        $('.main__panel').height('auto');
+        $('.autoheight').height('auto');
       }   
     
     });
     
-  }  
-
+  }
+  
   panelheight();
   
 
@@ -69,13 +69,13 @@ $(document).ready(function(){
   function snapscroll(){
     
   	$(window).on('load',function(){
-	  
+      
   		$.scrollify({
   		  section : ".scroll-section",
         setHeights: false
       });
+      
   	});
-    
   }
   
   
@@ -89,8 +89,10 @@ $(document).ready(function(){
   })
   .register("screen and (min-width:900px)", {
     match : function() {
-      snapscroll();
-      $.scrollify.enable();
+      if ( !$('body').hasClass('landing-page') ){
+        snapscroll();
+        $.scrollify.enable();
+      }
     },
     unmatch : function() {
       $.scrollify.disable();

@@ -122,8 +122,8 @@ $font-thin:300;
 // Change selection colour
 
 ::selection{
-	background-color:$color-brand;
-	color:$white;
+	background-color:$white;
+	color:$black;
 }
 
 // Body text styling
@@ -134,9 +134,9 @@ $font-thin:300;
 	color:$color-text;
   font-weight:$font-thin;
   letter-spacing:.05em;
-  
+  line-height:1.5;
 	h1, h2, h3, h4, h5{
-		margin-bottom:.7rem;
+		margin-bottom:1em;
 	  font-weight:$font-thick;
     font-family:$font-titles, sans-serif;
 	}
@@ -155,8 +155,39 @@ $font-thin:300;
 	p, ul {
 	  margin-top: 0;
 	  margin-bottom: 1.5em;
-	} 
+	}
 }
+
+@mixin text-body{
+	@include font-main;
+	letter-spacing:0;
+	color:$color-text;
+  font-weight:$font-thin;
+  
+	h1, h2, h3, h4, h5{
+		margin-bottom:1em;
+	  font-weight:$font-thick;
+    font-family:$font-titles, sans-serif;
+	}
+	h1{
+		font-size:1.5em;
+	}
+	h2{
+		font-size:1.2em;
+	}
+	h3{
+		font-size:1em;
+	}
+	h4{
+		font-size:1em;
+	}
+	p, ul {
+	  margin-top: 0;
+	  margin-bottom: 1.5em;
+	}
+}
+
+
 
 // Other custom text mixins
 
@@ -391,17 +422,13 @@ header{
     flex-direction:row-reverse;
     align-items:center;
     .header__site-title{
+      color:$white;
       font-weight:500;
       text-transform:uppercase;
       text-shadow:0 2px rgba(0,0,0,.2);
-      .inverted &{
-        color:$white;
-      }
-      color:$black;
       max-width: 400px;
       width:100%;
       text-align: right;
-      color:$white;
       img{
         max-width:200px;
         @include bp($bp1){
@@ -452,6 +479,7 @@ header{
             border-bottom:0;
             width:auto;
           }
+          @include hover-effect-underline($white);        
         }
       }
     }
@@ -500,17 +528,49 @@ main{
     &.--content{
       background-color:$content-bg;
       .--image-full{
-        //background-image:url('../img/content/content.jpg');
+        img, object{
+          width: 80%;
+          height: auto;
+          top: 30%;
+          right: 15%;
+          position: absolute;
+        }
       }
     }
     &.--web{
       background-color:$web-bg;
+      .--image-full{
+        img, object{
+          width: 80%;
+          height: auto;
+          top: 30%;
+          right: 15%;
+          position: absolute;
+        }
+      }
     }
     &.--seo{
       background-color:$seo-bg;
+      .--image-full{
+        img, object{
+          width: 70%;
+          height: auto;
+          top:28%;
+          right:20%;
+          position: absolute;
+        }
+      }
     }
     &.--contact{
       background-color:$contact-bg;
+      .contact__email-cta{
+        .email-cta__link{
+          color:$white;
+          font-size:2em;
+          font-weight:$font-mid;
+          margin-top:.7em;
+        }
+      }
       .--form-intro{
         @include bp-under(800px){
           padding-bottom:0;
@@ -576,7 +636,6 @@ $bpcw:$containerwidth;
   &.--text{
     padding-left:2rem;
     padding-right:4rem;
-    width:100%;
     @include bp($bpcw){
       padding-left:0;
       padding-right:4rem;
@@ -610,7 +669,7 @@ $bpcw:$containerwidth;
     @include bp($bp3){
       display:block;
     }
-    object{
+    object, img{
       width: 60%;
       height: auto;
       position:absolute;
@@ -630,12 +689,7 @@ $bpcw:$containerwidth;
     @include bp($bp3){
       display:block;
     }
-    object{
-      width: 60%;
-      height: auto;
-      top:35%;
-      right:25%;
-      position:absolute;
+    object, img{
     }
   }
 }
@@ -817,50 +871,49 @@ i{
 
 
 .footer{
-  height:auto;
   background-color:$footer-bg;
   color:$white;
+  position:relative;
+  height:auto;
+  font-size:.8em;
+  color:rgba(255,255,255,.5);
+  padding:1em 0;
+  @include bp($bp2){
+    height:50px;
+    top:-50px;
+  }
+  a{
+    color:$white;
+    &:hover{
+      color:$white;
+    }
+  }
   .footer__content{
-    padding-top:6rem;
-    padding-bottom:8rem;
+    height:auto;
     padding-left:2rem;
     padding-right:4rem;
     text-align:center;
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    .footer__item{
+      width:100%;
+      padding:.3em 0;
       @include bp($bp2){
-          display:flex;
-          align-items:flex-start;
-          justify-content:space-between;
+        width:auto;
+        padding:0;
+      }
+      &.--copy{
+        @include bp($bp2){
+          flex-grow:2;
           text-align:left;
-      }
-      .footer__share-icons{
-        @include bp-under(800px){
-          margin-top:2em;
-        }
-        i{
-          color: #fff;
-          font-size: 1.6em;
-          margin-left: 1rem;
         }
       }
-      .footer__item{
-        .item__title{
-          margin-bottom:1em;
-        }
-        @include bp-under(800px){
-        padding-bottom:1em;
+      span{
+        @include bp-under($bp2){
+          display:none;
         }
       }
-  }
-  .footer__footnote{
-    text-align:center;
-    height:auto;
-    font-size:.8em;
-    padding-bottom:2rem;
-    a{
-      color:$white;
-      &:hover{
-        color:$white;
-      };
     }
   }
 }

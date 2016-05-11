@@ -25,6 +25,7 @@
     "font-awesome": "fontawesome#^4.5.0",
     "vivus": "^0.3.0",
     "enquire": "^2.1.2",
-    "Scrollify": "^0.1.14"
+    "Scrollify": "^0.1.14",
+    "flexibility": "^1.0.6"
   }
 }
