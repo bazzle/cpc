@@ -1,3 +1,5 @@
+
+
 // Responsive mixins -----------------------------------
 
 // Breakpoints
@@ -72,6 +74,7 @@ $head-bg:transparent;
 $content-bg:$brand-navy;
 $web-bg:$brand-magenta;
 $seo-bg:$brand-orange;
+$about-bg:$brand-navy;
 $contact-bg:transparent;
 $footer-bg:$brand-navy;
 
@@ -122,8 +125,8 @@ $font-thin:300;
 // Change selection colour
 
 ::selection{
-	background-color:$white;
-	color:$black;
+	background-color:$black;
+	color:$white;
 }
 
 // Body text styling
@@ -233,7 +236,7 @@ $font-thin:300;
 @mixin hover-effect-underline($hovercolor){
 	display:inline-block;
 	@include hover-transition(all 1s ease);
-	border-bottom:2px solid;
+	border-bottom:2px solid transparent;
 	padding-bottom:.3em;
 	&:hover{
 		border-bottom:2px solid $hovercolor;
@@ -283,14 +286,14 @@ a{
        background-color:transparent;
      }
   }
-  .--inverted{
+  .m--inverted{
     color:$bgcolor;
     background-color:$color-brand;
     i{
       color:$bgcolor;
     }
   }
-  &.--notransform{
+  &.m--notransform{
     text-transform:none;
   }
   i{
@@ -378,15 +381,7 @@ body{
     height:100%;
     position:relative;
     background-size:cover;
-    &.--bg-content{
-      background-image:url(../img/content/hero-content.jpg);
-    }
-    &.--bg-web{
-      background-image:url(../img/content/hero-web.jpg);
-      background-position:center bottom;
-    }
-    &.--bg-seo{
-    }
+    background-image: url(../img/content/hero-content.jpg);
   }
 }
 	
@@ -478,8 +473,8 @@ header{
             background-color:transparent;
             border-bottom:0;
             width:auto;
+            @include hover-effect-underline($white);
           }
-          @include hover-effect-underline($white);        
         }
       }
     }
@@ -522,12 +517,12 @@ main{
       padding-top:0;
       padding-bottom:0;
     }
-    &.--head{
+    &.m--head{
       background-color:$head-bg;
     }
-    &.--content{
+    &.m--content{
       background-color:$content-bg;
-      .--image-full{
+      .m--image-full{
         img, object{
           width: 80%;
           height: auto;
@@ -537,9 +532,9 @@ main{
         }
       }
     }
-    &.--web{
+    &.m--web{
       background-color:$web-bg;
-      .--image-full{
+      .m--image-full{
         img, object{
           width: 80%;
           height: auto;
@@ -549,9 +544,9 @@ main{
         }
       }
     }
-    &.--seo{
+    &.m--seo{
       background-color:$seo-bg;
-      .--image-full{
+      .m--image-full{
         img, object{
           width: 70%;
           height: auto;
@@ -561,7 +556,7 @@ main{
         }
       }
     }
-    &.--contact{
+    &.m--contact{
       background-color:$contact-bg;
       .contact__email-cta{
         .email-cta__link{
@@ -571,19 +566,19 @@ main{
           margin-top:.7em;
         }
       }
-      .--form-intro{
+      .m--form-intro{
         @include bp-under(800px){
           padding-bottom:0;
         }
       }
-      .--form{
+      .m--form{
         @include bp-under(800px){
           padding-top:0;
         }
       }
     }
     
-    &.--inverted{
+    &.m--inverted{
       color:$white;
     }
   }
@@ -609,7 +604,7 @@ $bpcw:$containerwidth;
 
 .container{
   @include containerwidth();
-  &.--full_width{
+  &.m--full_width{
     max-width:100%;
   }
 }
@@ -624,23 +619,22 @@ $bpcw:$containerwidth;
         display:flex;
         align-items:center;
         justify-content:space-between;
-        height:100%;
     }
-    &.--full_width{
+    &.m--full_width{
       justify-content:space-around;
     }
 }
 
 .content__inner_split, .content__inner_full{
   
-  &.--text{
+  &.m--text{
     padding-left:2rem;
     padding-right:4rem;
     @include bp($bpcw){
       padding-left:0;
       padding-right:4rem;
     }
-    .--full_width &{
+    .m--full_width &{
       padding-left:2rem;
       padding-right:4rem;
       @include bp($bpcw){
@@ -661,7 +655,7 @@ $bpcw:$containerwidth;
     padding-top:0;
     padding-bottom:0;
   }
-  &.--image{
+  &.m--image{
     width:100%;
     height:400px;
     position:relative;
@@ -677,7 +671,7 @@ $bpcw:$containerwidth;
       top:0;
     }
   }
-  &.--image-full{
+  &.m--image-full{
     width:50%;
     height:100%;
     padding-top:0;
@@ -709,7 +703,7 @@ $bpcw:$containerwidth;
         letter-spacing:-.02em;
         margin-bottom:.6em;
         line-height: 1;
-        .--head &{
+        .m--head &{
           color:$head-panel-title;
           max-width:900px;
         }
@@ -718,7 +712,7 @@ $bpcw:$containerwidth;
         }
         @include bp($bp2){
           font-size:4em;
-          .--head &{
+          .m--head &{
             font-size:5em;
           }
         }
@@ -746,7 +740,7 @@ form{
     flex-wrap:wrap;
     width:100%;
     margin-bottom:1em;
-    &.--submit{
+    &.m--submit{
       margin-top:1em;
     }
     label{
@@ -775,7 +769,7 @@ i{
 .cta-button{
   @include btn-cta(0px, $black, $white);
   /*
-  .--inverted &{
+  .m--inverted &{
     background-color:$white;
     color:$black;
     i{
@@ -801,7 +795,7 @@ i{
   border:2px solid $black;
   @include hover-transition(all .4s ease);
   white-space:nowrap;
-  .--head &{
+  .m--head &{
     max-width:250px;
   }
   max-width:300px;
@@ -813,7 +807,7 @@ i{
     display:inline-block;
     margin-right:1em;
   }
-  &.--notransform{
+  &.m--notransform{
     text-transform:none;
   }
   i{
@@ -842,7 +836,7 @@ i{
      }
   }
   
-  .--inverted &{
+  .m--inverted &{
     color:$white;
     border:2px solid $white;
     &:after{
@@ -870,10 +864,14 @@ i{
 //  FOOTER ------------------------------------------------------------
 
 
+
+
+
 .footer{
   background-color:$footer-bg;
   color:$white;
   position:relative;
+  left:0;
   height:auto;
   font-size:.8em;
   color:rgba(255,255,255,.5);
@@ -896,6 +894,7 @@ i{
     display:flex;
     align-items:center;
     flex-wrap:wrap;
+    height:100%;
     .footer__item{
       width:100%;
       padding:.3em 0;
@@ -903,7 +902,7 @@ i{
         width:auto;
         padding:0;
       }
-      &.--copy{
+      &.m--copy{
         @include bp($bp2){
           flex-grow:2;
           text-align:left;
@@ -915,6 +914,13 @@ i{
         }
       }
     }
+  }
+}
+
+
+@-moz-document url-prefix() { 
+  .footer {
+     top:0;
   }
 }
 

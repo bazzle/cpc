@@ -148,8 +148,12 @@ $(document).ready(function(){
   
 
 
-  
+  // date in footer
 
+  var date = new Date();
+  var year = date.getFullYear();
+
+  $('.date').html(year);
 	
 	
 });

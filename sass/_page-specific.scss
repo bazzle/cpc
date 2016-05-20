@@ -1,17 +1,49 @@
 /* HOMEPAGE --------------------------------------- */
 
+@mixin page-colors($color){
+  background-color:$color;
+  footer{
+    background-color:$color;
+  }
+  .m--content{
+    h1,h2,h3,h4,h5{
+      color:$color;
+    } 
+  }
+  .m--content{
+    border-top:5px solid $color;
+  }
+}
+
+.landing-page{
+  @include page-colors($about-bg){
+  }
+}
+.content{
+  @include page-colors($content-bg){
+  }
+}
+.seo{
+  @include page-colors($seo-bg){
+  }
+}
+.web{
+  @include page-colors($web-bg){
+  }
+}
 
 
 .landing-page{
+  
+  ::selection{
+  	color:$white;
+  }
   header{
     position:absolute;
   }
-  footer{
-    background-color:$content-bg;
-  }
   main{
     .main__panel{
-      &.--head{
+      &.m--head{
         @include bp($bp2){
           height:450px;
         }
@@ -22,16 +54,15 @@
           }
         }
       }
-      &.--content{
-        border-top:10px solid $content-bg;
+      &.m--content{
         padding-top:3em;
+        background-color:$white;
         @include bp($bp2){
           padding-top:6em;
         }
-        background-color:$white;
         min-height:1000px;
       }
-      &.--contact{
+      &.m--contact{
         @include bp($bp2){
           min-height:560px;
         }
@@ -39,7 +70,6 @@
     }
     .main-copy__inner{
       h1,h2,h3,h4,h5{
-        color:$content-bg;
       }
       padding:0 1em;
       @include text-body;
@@ -55,4 +85,5 @@
       }
     }
   }
+  
 }
